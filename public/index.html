@@ -536,7 +536,92 @@
 
       letter-spacing: 0.15em;
     }
+/* FIX HERO + PLAYER BASEBALL SHAPE */
 
+.hero {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  padding-top: 10px !important;
+}
+
+.player-grid {
+  grid-template-columns: repeat(4, 220px) !important;
+  justify-content: center !important;
+  gap: 28px !important;
+}
+
+.player-card {
+  width: 220px !important;
+  height: 220px !important;
+  aspect-ratio: 1 / 1 !important;
+
+  border-radius: 50% !important;
+
+  flex: none !important;
+
+  padding: 20px !important;
+}
+
+.player-content {
+  width: 72% !important;
+}
+
+.player-number {
+  font-size: 26px !important;
+  margin-bottom: 7px !important;
+}
+
+.player-name {
+  font-size: 21px !important;
+  line-height: 1.03 !important;
+}
+
+.support-text {
+  margin-top: 13px !important;
+  font-size: 9px !important;
+}
+
+@media (max-width: 1000px) {
+  .player-grid {
+    grid-template-columns: repeat(3, 210px) !important;
+  }
+
+  .player-card {
+    width: 210px !important;
+    height: 210px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .player-grid {
+    grid-template-columns: repeat(2, 190px) !important;
+    gap: 20px !important;
+  }
+
+  .player-card {
+    width: 190px !important;
+    height: 190px !important;
+  }
+
+  .player-name {
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .player-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .player-card {
+    width: 230px !important;
+    height: 230px !important;
+    margin: 0 auto !important;
+  }
+}
     /* RESPONSIVE */
 
     @media (max-width: 1050px) {
