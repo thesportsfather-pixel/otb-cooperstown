@@ -1,228 +1,1127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>OTB Baseball | Road to Cooperstown</title>
 
+  <meta
+    name="description"
+    content="Support OTB Baseball on the Road to Cooperstown."
+  />
+
   <style>
+    :root {
+      --navy-950: #020817;
+      --navy-900: #041126;
+      --navy-800: #071a3f;
+      --navy-700: #0a285c;
+
+      --green: #98ff00;
+      --green-2: #55e600;
+      --green-dark: #1c7d00;
+
+      --white: #ffffff;
+      --silver: #dce5f6;
+      --muted: #aab8d1;
+
+      --card-border: rgba(152, 255, 0, 0.35);
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      color: var(--white);
+
       background:
-        radial-gradient(circle at top, #101d55 0%, #050b22 42%, #020617 100%);
-      color: white;
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(19, 55, 120, 0.35),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 18% 24%,
+          rgba(152, 255, 0, 0.10),
+          transparent 24%
+        ),
+        radial-gradient(
+          circle at 82% 20%,
+          rgba(152, 255, 0, 0.08),
+          transparent 26%
+        ),
+        linear-gradient(
+          180deg,
+          var(--navy-900) 0%,
+          var(--navy-950) 100%
+        );
     }
 
-    .page {
-      width: min(1100px, 92%);
-      margin: auto;
-      padding: 35px 0 60px;
+    a {
+      color: inherit;
+    }
+
+    .page-shell {
+      width: min(1180px, 94%);
+      margin: 0 auto;
+      padding: 30px 0 64px;
+    }
+
+    /* ------------------------------
+       HERO
+    ------------------------------ */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+
+      text-align: center;
+
+      padding:
+        18px
+        18px
+        38px;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(7, 26, 63, 0.96),
+          rgba(2, 8, 23, 0.96)
+        );
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+      box-shadow:
+        0 25px 65px
+        rgba(0, 0, 0, 0.35);
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          115deg,
+          transparent 0%,
+          rgba(152, 255, 0, 0.06) 28%,
+          transparent 52%
+        );
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 520px;
+      height: 520px;
+
+      left: 50%;
+      top: -360px;
+
+      transform:
+        translateX(-50%);
+
+      border-radius: 50%;
+
+      background:
+        rgba(152, 255, 0, 0.09);
+
+      filter: blur(80px);
+
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .team-logo {
+      display: block;
+
+      width:
+        min(
+          245px,
+          62vw
+        );
+
+      height: auto;
+
+      margin:
+        0
+        auto
+        8px;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 0 24px
+          rgba(152, 255, 0, 0.18)
+        );
+    }
+
+    .team-kicker {
+      margin-top: 2px;
+
+      color: var(--green);
+
+      font-size: 14px;
+      font-weight: 1000;
+
+      letter-spacing: 0.30em;
+
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin:
+        14px
+        0
+        0;
+
+      text-transform: uppercase;
+
+      line-height: 0.86;
+
+      font-style: italic;
+
+      font-weight: 1000;
+
+      letter-spacing: -0.045em;
+    }
+
+    .hero-title .road {
+      display: block;
+
+      color: white;
+
+      font-size:
+        clamp(
+          58px,
+          10vw,
+          122px
+        );
+
+      text-shadow:
+        5px 5px 0
+        rgba(5, 21, 55, 1),
+        8px 8px 0
+        rgba(152, 255, 0, 0.12);
+    }
+
+    .hero-title .coop {
+      display: block;
+
+      margin-top: 10px;
+
+      color: var(--green);
+
+      font-size:
+        clamp(
+          64px,
+          11vw,
+          134px
+        );
+
+      transform:
+        skewX(-7deg);
+
+      text-shadow:
+        4px 4px 0
+        var(--green-dark),
+        8px 8px 0
+        rgba(3, 12, 31, 0.95),
+        0 0 28px
+        rgba(152, 255, 0, 0.22);
+    }
+
+    .hero-divider {
+      width:
+        min(
+          520px,
+          78%
+        );
+
+      height: 4px;
+
+      margin:
+        22px
+        auto
+        18px;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--green),
+          transparent
+        );
+    }
+
+    .hero-tagline {
+      margin: 0;
+
+      color: var(--silver);
+
+      font-size:
+        clamp(
+          16px,
+          2vw,
+          20px
+        );
+
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+
+      margin:
+        20px
+        auto
+        0;
+
+      color: var(--silver);
+
+      font-size: 17px;
+
+      line-height: 1.65;
+    }
+
+    .hero-subtitle strong {
+      color: var(--green);
+    }
+
+    /* ------------------------------
+       PLAYER SECTION
+    ------------------------------ */
+
+    .players-section {
+      margin-top: 48px;
+    }
+
+    .section-kicker {
+      text-align: center;
+
+      color: var(--green);
+
+      font-size: 12px;
+      font-weight: 1000;
+
+      letter-spacing: 0.24em;
+
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin:
+        8px
+        0
+        8px;
+
+      text-align: center;
+
+      font-size:
+        clamp(
+          31px,
+          5vw,
+          46px
+        );
+
+      font-weight: 1000;
+
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      margin:
+        0
+        auto
+        28px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .player-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          5,
+          minmax(0, 1fr)
+        );
+
+      gap: 18px;
+    }
+
+    .player-card {
+      position: relative;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 300px;
+
+      padding:
+        30px
+        18px
+        26px;
+
+      overflow: hidden;
+
+      text-align: center;
+
+      text-decoration: none;
+
+      color: #0a1732;
+
+      border-radius:
+        50%
+        50%
+        46%
+        46% /
+        54%
+        54%
+        46%
+        46%;
+
+      border:
+        3px solid
+        rgba(255, 255, 255, 0.82);
+
+      background:
+        radial-gradient(
+          circle at 38% 25%,
+          #ffffff 0%,
+          #f5f2e8 42%,
+          #ded8c9 72%,
+          #b6b0a5 100%
+        );
+
+      box-shadow:
+        0 18px 35px
+        rgba(0, 0, 0, 0.32),
+        0 0 0 4px
+        rgba(152, 255, 0, 0.12),
+        inset -10px -14px 18px
+        rgba(0, 0, 0, 0.14);
+
+      transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease;
+    }
+
+    .player-card::before,
+    .player-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 46%;
+      height: 72%;
+
+      border:
+        3px dashed
+        #bd1d2e;
+
+      border-top: none;
+      border-bottom: none;
+
+      border-radius: 50%;
+
+      opacity: 0.72;
+
+      pointer-events: none;
+    }
+
+    .player-card::before {
+      left: 3%;
+    }
+
+    .player-card::after {
+      right: 3%;
+    }
+
+    .player-card:hover {
+      transform:
+        translateY(-7px)
+        scale(1.025);
+
+      box-shadow:
+        0 24px 45px
+        rgba(0, 0, 0, 0.4),
+        0 0 0 5px
+        rgba(152, 255, 0, 0.28),
+        0 0 28px
+        rgba(152, 255, 0, 0.18);
+    }
+
+    .player-number,
+    .player-name,
+    .support-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .player-number {
+      margin-bottom: 10px;
+
+      color: var(--green-dark);
+
+      font-size: 28px;
+      font-weight: 1000;
+
+      text-shadow:
+        1px 1px 0 white;
+    }
+
+    .player-name {
+      max-width: 170px;
+
+      color: #081b47;
+
+      font-size:
+        clamp(
+          19px,
+          2vw,
+          25px
+        );
+
+      font-weight: 1000;
+
+      line-height: 1.02;
+
+      text-transform: uppercase;
+    }
+
+    .support-text {
+      margin-top: 18px;
+
+      padding:
+        8px
+        12px;
+
+      border-radius: 999px;
+
+      color: var(--green);
+
+      background:
+        linear-gradient(
+          180deg,
+          #071a3f,
+          #031027
+        );
+
+      font-size: 11px;
+      font-weight: 1000;
+
+      letter-spacing: 0.05em;
+
+      text-transform: uppercase;
+
+      box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.26);
+    }
+
+    /* ------------------------------
+       HOW IT WORKS
+    ------------------------------ */
+
+    .how-section {
+      margin-top: 58px;
+
+      padding:
+        30px
+        28px;
+
+      border-radius: 24px;
+
+      border:
+        1px solid
+        rgba(152, 255, 0, 0.20);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(7, 26, 63, 0.84),
+          rgba(3, 10, 26, 0.90)
+        );
+    }
+
+    .how-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0, 1fr)
+        );
+
+      gap: 18px;
+
+      margin-top: 24px;
+    }
+
+    .how-card {
+      padding: 20px;
+
+      border-radius: 18px;
+
+      background:
+        rgba(255, 255, 255, 0.035);
+
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
       text-align: center;
     }
 
-    .logo {
-      width: min(330px, 78vw);
-      display: block;
-      margin: 0 auto 18px;
+    .step {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 42px;
+      height: 42px;
+
+      margin:
+        0
+        auto
+        12px;
+
+      border-radius: 50%;
+
+      background: var(--green);
+
+      color: #061224;
+
+      font-weight: 1000;
     }
 
-    .kicker {
-      color: #39ff14;
-      font-weight: 900;
-      letter-spacing: 3px;
+    .how-card h3 {
+      margin:
+        0
+        0
+        8px;
+
+      color: var(--green);
+
       text-transform: uppercase;
-      margin-bottom: 8px;
-    }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(34px, 7vw, 64px);
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .subtitle {
-      margin: 14px auto 8px;
-      max-width: 700px;
-      font-size: 19px;
-      line-height: 1.5;
-      color: #dbe4ff;
-    }
-
-    .instruction {
-      margin: 32px auto 18px;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .players {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .player {
-      display: block;
-      text-decoration: none;
-      color: white;
-      background: rgba(9, 20, 60, 0.92);
-      border: 2px solid #162d76;
-      border-radius: 16px;
-      padding: 20px 16px;
-      transition: 0.18s ease;
-      box-shadow: 0 8px 24px rgba(0,0,0,.2);
-    }
-
-    .player:hover {
-      transform: translateY(-3px);
-      border-color: #39ff14;
-      box-shadow: 0 10px 28px rgba(57,255,20,.12);
-    }
-
-    .number {
-      color: #39ff14;
       font-size: 16px;
-      font-weight: 900;
-      margin-bottom: 7px;
     }
 
-    .name {
-      font-size: 21px;
-      font-weight: 900;
-    }
+    .how-card p {
+      margin: 0;
 
-    .support {
-      color: #b9c6ea;
-      font-size: 13px;
-      margin-top: 7px;
-    }
+      color: var(--silver);
 
-    footer {
-      margin-top: 45px;
-      color: #aebadb;
+      line-height: 1.5;
+
       font-size: 14px;
     }
 
-    footer strong {
-      color: #39ff14;
+    /* ------------------------------
+       FOOTER
+    ------------------------------ */
+
+    .footer {
+      margin-top: 48px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
+    .footer-logo {
+      width: 110px;
+      height: auto;
+
+      margin-bottom: 10px;
+    }
+
+    .footer strong {
+      color: var(--green);
+
+      letter-spacing: 0.16em;
+    }
+
+    /* ------------------------------
+       RESPONSIVE
+    ------------------------------ */
+
+    @media (max-width: 1050px) {
+      .player-grid {
+        grid-template-columns:
+          repeat(
+            3,
+            minmax(0, 1fr)
+          );
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding:
+          14px
+          12px
+          28px;
+      }
+
+      .player-grid {
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
+
+        gap: 14px;
+      }
+
+      .player-card {
+        min-height: 265px;
+      }
+
+      .how-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .page-shell {
+        width: 96%;
+      }
+
+      .team-logo {
+        width:
+          min(
+            205px,
+            68vw
+          );
+      }
+
+      .player-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .player-card {
+        width:
+          min(
+            310px,
+            88vw
+          );
+
+        margin: 0 auto;
+
+        min-height: 310px;
+      }
+
+      .hero-title .road {
+        font-size:
+          clamp(
+            50px,
+            17vw,
+            80px
+          );
+      }
+
+      .hero-title .coop {
+        font-size:
+          clamp(
+            54px,
+            18vw,
+            90px
+          );
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="page">
+  <main class="page-shell">
 
-    <img
-      src="/otb-logo.png"
-      alt="OTB Baseball"
-      class="logo"
-    >
+    <section class="hero">
 
-    <div class="kicker">
-      OTB Baseball
-    </div>
+      <div class="hero-content">
 
-    <h1>
-      Road to Cooperstown
-    </h1>
+        <img
+          src="/otb-logo.png"
+          alt="Out The Box Baseball"
+          class="team-logo"
+        />
 
-    <p class="subtitle">
-      Help support OTB Baseball on their Road to Cooperstown.
-      Choose a player below to visit their individual
-      100-baseball fundraiser board.
-    </p>
+        <div class="team-kicker">
+          OTB Baseball
+        </div>
 
-    <div class="instruction">
-      Choose a player to support
-    </div>
+        <h1 class="hero-title">
 
-    <section class="players">
+          <span class="road">
+            Road To
+          </span>
 
-      <a class="player"
-         href="/fundraiser?player=alex-angulo">
-        <div class="number">#99</div>
-        <div class="name">Alex Angulo</div>
-        <div class="support">Support Alex →</div>
-      </a>
+          <span class="coop">
+            Cooperstown
+          </span>
 
-      <a class="player"
-         href="/fundraiser?player=andrew-lopez">
-        <div class="number">#16</div>
-        <div class="name">Andrew Lopez</div>
-        <div class="support">Support Andrew →</div>
-      </a>
+        </h1>
 
-      <a class="player"
-         href="/fundraiser?player=braden-olivera">
-        <div class="number">#33</div>
-        <div class="name">Braden Olivera</div>
-        <div class="support">Support Braden →</div>
-      </a>
+        <div class="hero-divider"></div>
 
-      <a class="player"
-         href="/fundraiser?player=branden-rodriguez">
-        <div class="number">#26</div>
-        <div class="name">Branden Rodriguez</div>
-        <div class="support">Support Branden →</div>
-      </a>
+        <p class="hero-tagline">
+          One Team. One Goal. One Dream.
+        </p>
 
-      <a class="player"
-         href="/fundraiser?player=daniel-gonzalez">
-        <div class="number">#42</div>
-        <div class="name">Daniel Gonzalez</div>
-        <div class="support">Support Daniel →</div>
-      </a>
+        <p class="hero-subtitle">
+          Help support OTB Baseball on their Road to Cooperstown.
+          Choose a player below to visit their individual
+          <strong>100-baseball fundraiser board</strong>.
+        </p>
 
-      <a class="player"
-         href="/fundraiser?player=david-tano">
-        <div class="number">#2</div>
-        <div class="name">David Taño</div>
-        <div class="support">Support David →</div>
-      </a>
-
-      <a class="player"
-         href="/fundraiser?player=justin-jordan">
-        <div class="number">#10</div>
-        <div class="name">Justin Jordan</div>
-        <div class="support">Support Justin →</div>
-      </a>
-
-      <a class="player"
-         href="/fundraiser?player=ryan-medina">
-        <div class="number">#9</div>
-        <div class="name">Ryan Medina</div>
-        <div class="support">Support Ryan →</div>
-      </a>
-
-      <a class="player"
-         href="/fundraiser?player=tyler-brenes">
-        <div class="number">#21</div>
-        <div class="name">Tyler Brenes</div>
-        <div class="support">Support Tyler →</div>
-      </a>
-
-      <a class="player"
-         href="/fundraiser?player=matthew-de-la-fuente">
-        <div class="number">#7</div>
-        <div class="name">Matthew De La Fuente</div>
-        <div class="support">Support Matthew →</div>
-      </a>
+      </div>
 
     </section>
 
-    <footer>
-      <strong>OTB BASEBALL</strong><br>
-      One team. One goal. Road to Cooperstown.
+
+    <section class="players-section">
+
+      <div class="section-kicker">
+        OTB Baseball Fundraiser
+      </div>
+
+      <h2 class="section-title">
+        Choose a Player to Support
+      </h2>
+
+      <p class="section-subtitle">
+        Each player has their own individual 100-baseball fundraiser board.
+      </p>
+
+
+      <div class="player-grid">
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=alex-angulo"
+        >
+          <div class="player-number">
+            #99
+          </div>
+
+          <div class="player-name">
+            Alex Angulo
+          </div>
+
+          <div class="support-text">
+            Support Alex →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=andrew-lopez"
+        >
+          <div class="player-number">
+            #16
+          </div>
+
+          <div class="player-name">
+            Andrew Lopez
+          </div>
+
+          <div class="support-text">
+            Support Andrew →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=braden-olivera"
+        >
+          <div class="player-number">
+            #33
+          </div>
+
+          <div class="player-name">
+            Braden Olivera
+          </div>
+
+          <div class="support-text">
+            Support Braden →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=branden-rodriguez"
+        >
+          <div class="player-number">
+            #26
+          </div>
+
+          <div class="player-name">
+            Branden Rodriguez
+          </div>
+
+          <div class="support-text">
+            Support Branden →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=daniel-gonzalez"
+        >
+          <div class="player-number">
+            #42
+          </div>
+
+          <div class="player-name">
+            Daniel Gonzalez
+          </div>
+
+          <div class="support-text">
+            Support Daniel →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=david-tano"
+        >
+          <div class="player-number">
+            #2
+          </div>
+
+          <div class="player-name">
+            David Taño
+          </div>
+
+          <div class="support-text">
+            Support David →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=justin-jordan"
+        >
+          <div class="player-number">
+            #10
+          </div>
+
+          <div class="player-name">
+            Justin Jordan
+          </div>
+
+          <div class="support-text">
+            Support Justin →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=ryan-medina"
+        >
+          <div class="player-number">
+            #9
+          </div>
+
+          <div class="player-name">
+            Ryan Medina
+          </div>
+
+          <div class="support-text">
+            Support Ryan →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=tyler-brenes"
+        >
+          <div class="player-number">
+            #21
+          </div>
+
+          <div class="player-name">
+            Tyler Brenes
+          </div>
+
+          <div class="support-text">
+            Support Tyler →
+          </div>
+        </a>
+
+
+        <a
+          class="player-card"
+          href="/fundraiser?player=matthew-de-la-fuente"
+        >
+          <div class="player-number">
+            #7
+          </div>
+
+          <div class="player-name">
+            Matthew De La Fuente
+          </div>
+
+          <div class="support-text">
+            Support Matthew →
+          </div>
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <section class="how-section">
+
+      <div class="section-kicker">
+        Simple & Secure
+      </div>
+
+      <h2 class="section-title">
+        How It Works
+      </h2>
+
+
+      <div class="how-grid">
+
+        <div class="how-card">
+
+          <div class="step">
+            1
+          </div>
+
+          <h3>
+            Choose a Player
+          </h3>
+
+          <p>
+            Pick the OTB player you want to support.
+          </p>
+
+        </div>
+
+
+        <div class="how-card">
+
+          <div class="step">
+            2
+          </div>
+
+          <h3>
+            Pick Baseballs
+          </h3>
+
+          <p>
+            Select one or more available baseball numbers
+            from that player's board.
+          </p>
+
+        </div>
+
+
+        <div class="how-card">
+
+          <div class="step">
+            3
+          </div>
+
+          <h3>
+            Checkout Securely
+          </h3>
+
+          <p>
+            Complete your contribution through secure
+            Stripe Checkout.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+      <img
+        src="/otb-logo.png"
+        alt="OTB Baseball"
+        class="footer-logo"
+      />
+
+      <br />
+
+      <strong>
+        OTB BASEBALL
+      </strong>
+
+      <br />
+
+      One Team. One Goal. Road to Cooperstown.
+
     </footer>
 
   </main>
