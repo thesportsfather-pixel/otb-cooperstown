@@ -88,11 +88,6 @@
       padding: 28px 0 60px;
     }
 
-
-    /* =========================
-       HERO
-    ========================= */
-
     .hero {
       text-align: center;
       padding: 0 0 34px;
@@ -100,10 +95,8 @@
 
     .logo {
       display: block;
-
       width: min(220px, 58vw);
       height: auto;
-
       margin: 0 auto 10px;
 
       filter:
@@ -120,7 +113,6 @@
 
       font-size: 14px;
       font-weight: 1000;
-
       letter-spacing: 0.30em;
 
       text-transform: uppercase;
@@ -130,18 +122,14 @@
       margin: 16px 0 0;
 
       line-height: 0.86;
-
       font-style: italic;
       font-weight: 1000;
-
       letter-spacing: -0.045em;
-
       text-transform: uppercase;
     }
 
     .hero-title .road {
       display: block;
-
       color: white;
 
       font-size:
@@ -158,7 +146,6 @@
 
     .hero-title .coop {
       display: block;
-
       margin-top: 10px;
 
       color: var(--green);
@@ -170,8 +157,7 @@
           132px
         );
 
-      transform:
-        skewX(-6deg);
+      transform: skewX(-6deg);
 
       text-shadow:
         4px 4px 0
@@ -214,9 +200,7 @@
         );
 
       font-weight: 1000;
-
       letter-spacing: 0.10em;
-
       text-transform: uppercase;
     }
 
@@ -235,18 +219,254 @@
       color: var(--green);
     }
 
+    .players-section {
+      margin-top: 34px;
+    }
 
-    /* =========================
-       GENERAL TEAM DONATION
-    ========================= */
+    .section-kicker {
+      text-align: center;
+
+      color: var(--green);
+
+      font-size: 12px;
+      font-weight: 1000;
+
+      letter-spacing: 0.22em;
+
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 8px 0 6px;
+
+      text-align: center;
+
+      font-size:
+        clamp(
+          30px,
+          5vw,
+          46px
+        );
+
+      font-weight: 1000;
+
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      margin:
+        0
+        auto
+        30px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 15px;
+    }
+
+    .player-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          5,
+          1fr
+        );
+
+      gap:
+        28px
+        22px;
+
+      align-items: center;
+      justify-items: center;
+    }
+
+    .player-card {
+      position: relative;
+
+      width: 100%;
+      max-width: 215px;
+
+      aspect-ratio: 1 / 1;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      border-radius: 50%;
+
+      text-decoration: none;
+
+      border:
+        3px solid
+        rgba(255, 255, 255, 0.94);
+
+      background:
+        radial-gradient(
+          circle at 34% 27%,
+          #ffffff 0%,
+          var(--baseball) 42%,
+          #ded7c9 72%,
+          var(--baseball-shadow) 100%
+        );
+
+      box-shadow:
+        0 18px 34px
+        rgba(0, 0, 0, 0.38),
+
+        0 0 0 4px
+        rgba(147, 255, 0, 0.11),
+
+        inset
+        -9px
+        -11px
+        16px
+        rgba(0, 0, 0, 0.13);
+
+      transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease;
+    }
+
+    .player-card:hover {
+      transform:
+        translateY(-6px)
+        scale(1.035);
+
+      box-shadow:
+        0 24px 44px
+        rgba(0, 0, 0, 0.42),
+
+        0 0 0 5px
+        rgba(147, 255, 0, 0.26),
+
+        0 0 28px
+        rgba(147, 255, 0, 0.16);
+    }
+
+    .player-card::before,
+    .player-card::after {
+      content: "";
+
+      position: absolute;
+
+      top: 9%;
+      bottom: 9%;
+
+      width: 34%;
+
+      border:
+        3px dashed
+        var(--stitch);
+
+      border-top: none;
+      border-bottom: none;
+
+      border-radius: 50%;
+
+      opacity: 0.65;
+
+      pointer-events: none;
+    }
+
+    .player-card::before {
+      left: 4%;
+    }
+
+    .player-card::after {
+      right: 4%;
+    }
+
+    .player-content {
+      position: relative;
+      z-index: 2;
+
+      width: 70%;
+
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+    .player-number {
+      margin-bottom: 7px;
+
+      color: var(--green-dark);
+
+      font-size:
+        clamp(
+          21px,
+          2.3vw,
+          29px
+        );
+
+      font-weight: 1000;
+
+      text-shadow:
+        1px 1px 0 white;
+    }
+
+    .player-name {
+      color: #061a46;
+
+      font-size:
+        clamp(
+          17px,
+          1.8vw,
+          22px
+        );
+
+      font-weight: 1000;
+
+      line-height: 1.02;
+
+      text-transform: uppercase;
+    }
+
+    .support {
+      margin-top: 14px;
+
+      padding:
+        7px
+        11px;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #082356,
+          #031027
+        );
+
+      color: var(--green);
+
+      font-size: 9px;
+      font-weight: 1000;
+
+      letter-spacing: 0.04em;
+
+      text-transform: uppercase;
+
+      white-space: nowrap;
+    }
 
     .general-donation-section {
       max-width: 820px;
 
       margin:
-        10px
+        58px
         auto
-        54px;
+        0;
 
       padding: 28px;
 
@@ -522,266 +742,6 @@
         rgba(147, 255, 0, 0.25);
     }
 
-
-    /* =========================
-       PLAYER SECTION
-    ========================= */
-
-    .players-section {
-      margin-top: 34px;
-    }
-
-    .section-kicker {
-      text-align: center;
-
-      color: var(--green);
-
-      font-size: 12px;
-      font-weight: 1000;
-
-      letter-spacing: 0.22em;
-
-      text-transform: uppercase;
-    }
-
-    .section-title {
-      margin: 8px 0 6px;
-
-      text-align: center;
-
-      font-size:
-        clamp(
-          30px,
-          5vw,
-          46px
-        );
-
-      font-weight: 1000;
-
-      text-transform: uppercase;
-    }
-
-    .section-subtitle {
-      margin:
-        0
-        auto
-        30px;
-
-      text-align: center;
-
-      color: var(--muted);
-
-      font-size: 15px;
-    }
-
-
-    /* EXACTLY 5 ACROSS ON DESKTOP */
-
-    .player-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(
-          5,
-          1fr
-        );
-
-      gap:
-        28px
-        22px;
-
-      align-items: center;
-      justify-items: center;
-    }
-
-
-    /* TRUE CIRCULAR BASEBALL */
-
-    .player-card {
-      position: relative;
-
-      width: 100%;
-      max-width: 215px;
-
-      aspect-ratio: 1 / 1;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-
-      border-radius: 50%;
-
-      text-decoration: none;
-
-      border:
-        3px solid
-        rgba(255, 255, 255, 0.94);
-
-      background:
-        radial-gradient(
-          circle at 34% 27%,
-          #ffffff 0%,
-          var(--baseball) 42%,
-          #ded7c9 72%,
-          var(--baseball-shadow) 100%
-        );
-
-      box-shadow:
-        0 18px 34px
-        rgba(0, 0, 0, 0.38),
-
-        0 0 0 4px
-        rgba(147, 255, 0, 0.11),
-
-        inset
-        -9px
-        -11px
-        16px
-        rgba(0, 0, 0, 0.13);
-
-      transition:
-        transform 0.16s ease,
-        box-shadow 0.16s ease;
-    }
-
-    .player-card:hover {
-      transform:
-        translateY(-6px)
-        scale(1.035);
-
-      box-shadow:
-        0 24px 44px
-        rgba(0, 0, 0, 0.42),
-
-        0 0 0 5px
-        rgba(147, 255, 0, 0.26),
-
-        0 0 28px
-        rgba(147, 255, 0, 0.16);
-    }
-
-
-    /* BASEBALL STITCHING */
-
-    .player-card::before,
-    .player-card::after {
-      content: "";
-
-      position: absolute;
-
-      top: 9%;
-      bottom: 9%;
-
-      width: 34%;
-
-      border:
-        3px dashed
-        var(--stitch);
-
-      border-top: none;
-      border-bottom: none;
-
-      border-radius: 50%;
-
-      opacity: 0.65;
-
-      pointer-events: none;
-    }
-
-    .player-card::before {
-      left: 4%;
-    }
-
-    .player-card::after {
-      right: 4%;
-    }
-
-    .player-content {
-      position: relative;
-      z-index: 2;
-
-      width: 70%;
-
-      text-align: center;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-    }
-
-    .player-number {
-      margin-bottom: 7px;
-
-      color: var(--green-dark);
-
-      font-size:
-        clamp(
-          21px,
-          2.3vw,
-          29px
-        );
-
-      font-weight: 1000;
-
-      text-shadow:
-        1px 1px 0 white;
-    }
-
-    .player-name {
-      color: #061a46;
-
-      font-size:
-        clamp(
-          17px,
-          1.8vw,
-          22px
-        );
-
-      font-weight: 1000;
-
-      line-height: 1.02;
-
-      text-transform: uppercase;
-    }
-
-    .support {
-      margin-top: 14px;
-
-      padding:
-        7px
-        11px;
-
-      border-radius: 999px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #082356,
-          #031027
-        );
-
-      color: var(--green);
-
-      font-size: 9px;
-      font-weight: 1000;
-
-      letter-spacing: 0.04em;
-
-      text-transform: uppercase;
-
-      white-space: nowrap;
-    }
-
-
-    /* =========================
-       HOW IT WORKS
-    ========================= */
-
     .how {
       margin-top: 58px;
 
@@ -873,11 +833,6 @@
       line-height: 1.5;
     }
 
-
-    /* =========================
-       FOOTER
-    ========================= */
-
     footer {
       margin-top: 46px;
 
@@ -902,13 +857,7 @@
       letter-spacing: 0.16em;
     }
 
-
-    /* =========================
-       TABLET
-    ========================= */
-
     @media (max-width: 1050px) {
-
       .player-grid {
         grid-template-columns:
           repeat(
@@ -920,16 +869,9 @@
       .player-card {
         max-width: 210px;
       }
-
     }
 
-
-    /* =========================
-       PHONE
-    ========================= */
-
     @media (max-width: 700px) {
-
       .page {
         width: 95%;
       }
@@ -985,16 +927,9 @@
       .how-grid {
         grid-template-columns: 1fr;
       }
-
     }
 
-
-    /* =========================
-       VERY SMALL PHONE
-    ========================= */
-
     @media (max-width: 390px) {
-
       .player-grid {
         grid-template-columns: 1fr;
       }
@@ -1015,16 +950,13 @@
       .support {
         font-size: 9px;
       }
-
     }
-
   </style>
 </head>
 
 <body>
 
   <main class="page">
-
 
     <!-- HERO -->
 
@@ -1064,109 +996,6 @@
         <strong>100-baseball fundraiser board</strong>,
         or make a general donation directly to the team.
       </p>
-
-    </section>
-
-
-    <!-- GENERAL TEAM DONATION -->
-
-    <section class="general-donation-section">
-
-      <div class="general-kicker">
-        Support the Entire Team
-      </div>
-
-      <h2 class="general-title">
-        General Team Donation
-      </h2>
-
-      <p class="general-description">
-        Want to support OTB without choosing a specific player
-        or baseball? Enter any custom amount below.
-      </p>
-
-
-      <div class="general-form">
-
-
-        <div class="field">
-
-          <label for="generalDonationAmount">
-            Donation Amount
-          </label>
-
-          <div class="amount-wrap">
-
-            <span class="amount-symbol">
-              $
-            </span>
-
-            <input
-              id="generalDonationAmount"
-              type="number"
-              min="1"
-              step="0.01"
-              inputmode="decimal"
-              placeholder="100.00"
-            />
-
-          </div>
-
-        </div>
-
-
-        <div class="field">
-
-          <label for="generalDonorName">
-            Donor Name
-          </label>
-
-          <input
-            id="generalDonorName"
-            type="text"
-            maxlength="50"
-            autocomplete="name"
-            placeholder="Example: The Smith Family"
-          />
-
-        </div>
-
-
-        <label class="anonymous-option">
-
-          <input
-            id="generalAnonymous"
-            type="checkbox"
-          />
-
-          <span>
-            Remain Anonymous
-          </span>
-
-        </label>
-
-
-        <button
-          id="generalDonateButton"
-          class="general-donate-button"
-          type="button"
-        >
-          Donate to OTB
-        </button>
-
-
-        <div
-          id="generalStatus"
-          class="general-status"
-        ></div>
-
-
-        <p class="general-note">
-          General donations support OTB Baseball as a team.
-          No player or baseball will be selected.
-        </p>
-
-      </div>
 
     </section>
 
@@ -1410,6 +1239,108 @@
           </div>
         </a>
 
+
+      </div>
+
+    </section>
+
+
+    <!-- GENERAL TEAM DONATION -->
+
+    <section class="general-donation-section">
+
+      <div class="general-kicker">
+        Support the Entire Team
+      </div>
+
+      <h2 class="general-title">
+        General Team Donation
+      </h2>
+
+      <p class="general-description">
+        Want to support OTB without choosing a specific player
+        or baseball? Enter any custom amount below.
+      </p>
+
+
+      <div class="general-form">
+
+        <div class="field">
+
+          <label for="generalDonationAmount">
+            Donation Amount
+          </label>
+
+          <div class="amount-wrap">
+
+            <span class="amount-symbol">
+              $
+            </span>
+
+            <input
+              id="generalDonationAmount"
+              type="number"
+              min="1"
+              step="0.01"
+              inputmode="decimal"
+              placeholder="100.00"
+            />
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="generalDonorName">
+            Donor Name
+          </label>
+
+          <input
+            id="generalDonorName"
+            type="text"
+            maxlength="50"
+            autocomplete="name"
+            placeholder="Example: The Smith Family"
+          />
+
+        </div>
+
+
+        <label class="anonymous-option">
+
+          <input
+            id="generalAnonymous"
+            type="checkbox"
+          />
+
+          <span>
+            Remain Anonymous
+          </span>
+
+        </label>
+
+
+        <button
+          id="generalDonateButton"
+          class="general-donate-button"
+          type="button"
+        >
+          Donate to OTB
+        </button>
+
+
+        <div
+          id="generalStatus"
+          class="general-status"
+        ></div>
+
+
+        <p class="general-note">
+          General donations support OTB Baseball as a team.
+          No player or baseball will be selected.
+        </p>
 
       </div>
 
@@ -1762,10 +1693,6 @@
       }
     );
 
-
-    /* =========================
-       SUCCESS / CANCEL MESSAGE
-    ========================= */
 
     const params =
       new URLSearchParams(
