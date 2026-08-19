@@ -32,7 +32,12 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       color: white;
 
       background:
@@ -53,7 +58,8 @@
         );
     }
 
-    button {
+    button,
+    input {
       font: inherit;
     }
 
@@ -145,9 +151,7 @@
 
     .hero-title .coop {
       display: block;
-
       margin-top: 10px;
-
       color: var(--green);
     }
 
@@ -365,6 +369,7 @@
       position: relative;
 
       display: flex;
+      flex-direction: column;
 
       align-items: center;
       justify-content: center;
@@ -373,37 +378,32 @@
 
       border:
         2px solid
-        rgba(255, 255, 255, 0.2);
+        rgba(255, 255, 255, 0.25);
 
       border-radius: 50%;
 
       background:
         radial-gradient(
-          circle at 35% 30%,
+          circle at 32% 26%,
           #ffffff 0%,
-          #ededed 42%,
-          #cfcfd3 72%,
-          #9f9fa6 100%
+          #f9f6ef 42%,
+          #ddd7ca 72%,
+          #bdb5a7 100%
         );
 
       color: #111;
 
-      font-size:
-        clamp(
-          12px,
-          1.7vw,
-          18px
-        );
-
-      font-weight: 1000;
-
       cursor: pointer;
+
+      padding: 7px;
+
+      overflow: hidden;
 
       box-shadow:
         inset
-        -5px
-        -7px
-        10px
+        -6px
+        -8px
+        11px
         rgba(0, 0, 0, 0.16);
 
       transition:
@@ -417,8 +417,10 @@
 
       position: absolute;
 
-      width: 48%;
-      height: 68%;
+      top: 7%;
+      bottom: 7%;
+
+      width: 35%;
 
       border:
         2px dashed
@@ -429,7 +431,9 @@
 
       border-radius: 50%;
 
-      opacity: 0.5;
+      opacity: 0.68;
+
+      pointer-events: none;
     }
 
     .ball::before {
@@ -448,9 +452,49 @@
       border-color: var(--green);
     }
 
-    .ball.selected {
-      color: #071108;
+    .ball-number {
+      position: relative;
+      z-index: 3;
 
+      font-size:
+        clamp(
+          12px,
+          1.7vw,
+          18px
+        );
+
+      font-weight: 1000;
+
+      color: #111;
+    }
+
+    .donor-name {
+      position: relative;
+      z-index: 3;
+
+      width: 88%;
+
+      margin-top: 3px;
+
+      text-align: center;
+
+      color: #1d4720;
+
+      font-size:
+        clamp(
+          7px,
+          0.75vw,
+          10px
+        );
+
+      line-height: 1.05;
+
+      font-weight: 1000;
+
+      overflow-wrap: anywhere;
+    }
+
+    .ball.selected {
       border-color: white;
 
       background:
@@ -464,6 +508,7 @@
       box-shadow:
         0 0 0 3px
         rgba(255, 255, 255, 0.14),
+
         0 0 18px
         rgba(57, 255, 20, 0.4);
     }
@@ -474,31 +519,43 @@
     }
 
     .ball.sold {
-      color: #858892;
-
-      border-color:
-        rgba(255, 255, 255, 0.08);
-
-      background: #292c35;
-
-      opacity: 0.58;
-
       cursor: not-allowed;
 
-      box-shadow: none;
+      opacity: 1;
+
+      background:
+        radial-gradient(
+          circle at 32% 26%,
+          #dadfd7 0%,
+          #c6cdc2 45%,
+          #a5aea1 72%,
+          #7f887c 100%
+        );
+
+      border-color:
+        rgba(255, 255, 255, 0.12);
+    }
+
+    .ball.sold .ball-number {
+      color: #18251a;
+    }
+
+    .ball.sold .donor-name {
+      color: #143918;
     }
 
     .ball.sold::before,
     .ball.sold::after {
-      border-color: #777;
+      border-color: #8f3640;
     }
 
-    .checkout-panel {
+    .checkout-panel,
+    .team-donation-panel {
       max-width: 760px;
 
       margin: 30px auto 0;
 
-      padding: 16px;
+      padding: 20px;
 
       border:
         1px solid
@@ -512,6 +569,120 @@
       box-shadow:
         0 14px 35px
         rgba(0, 0, 0, 0.4);
+    }
+
+    .panel-title {
+      margin: 0 0 8px;
+
+      text-align: center;
+
+      color: var(--green);
+
+      font-size: 23px;
+
+      font-weight: 1000;
+
+      text-transform: uppercase;
+    }
+
+    .panel-description {
+      margin: 0 auto 18px;
+
+      text-align: center;
+
+      color: var(--silver);
+
+      font-size: 14px;
+
+      line-height: 1.55;
+    }
+
+    .donor-field,
+    .amount-field {
+      margin-bottom: 14px;
+    }
+
+    .donor-field label,
+    .amount-field label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: white;
+
+      font-size: 12px;
+      font-weight: 1000;
+
+      letter-spacing: 0.08em;
+
+      text-transform: uppercase;
+    }
+
+    .donor-field input,
+    .amount-field input {
+      width: 100%;
+
+      padding: 14px 15px;
+
+      border:
+        2px solid
+        rgba(255, 255, 255, 0.15);
+
+      border-radius: 12px;
+
+      background: #08122d;
+
+      color: white;
+
+      outline: none;
+    }
+
+    .donor-field input:focus,
+    .amount-field input:focus {
+      border-color: var(--green);
+    }
+
+    .donor-field input:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .anonymous-option {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin:
+        10px
+        0
+        18px;
+
+      padding:
+        12px
+        14px;
+
+      border-radius: 12px;
+
+      background:
+        rgba(255, 255, 255, 0.05);
+
+      cursor: pointer;
+    }
+
+    .anonymous-option input {
+      width: 20px;
+      height: 20px;
+
+      accent-color: var(--green);
+    }
+
+    .anonymous-option span {
+      color: var(--silver);
+
+      font-size: 14px;
+      font-weight: 900;
     }
 
     .selection-summary {
@@ -535,12 +706,14 @@
       font-weight: 1000;
     }
 
-    .checkout-button {
+    .checkout-button,
+    .team-donation-button {
       width: 100%;
 
       padding: 16px 18px;
 
       border: none;
+
       border-radius: 12px;
 
       background:
@@ -561,9 +734,82 @@
       cursor: pointer;
     }
 
-    .checkout-button:disabled {
+    .checkout-button:disabled,
+    .team-donation-button:disabled {
       cursor: not-allowed;
       opacity: 0.45;
+    }
+
+    .divider {
+      max-width: 760px;
+
+      height: 1px;
+
+      margin: 44px auto 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(57, 255, 20, 0.55),
+          transparent
+        );
+    }
+
+    .team-donation-panel {
+      border-color:
+        rgba(255, 255, 255, 0.2);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(9, 20, 60, 0.96),
+          rgba(3, 8, 25, 0.98)
+        );
+    }
+
+    .team-donation-note {
+      margin-top: 12px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .general-status {
+      display: none;
+
+      margin-top: 14px;
+
+      padding: 12px 14px;
+
+      border-radius: 11px;
+
+      text-align: center;
+
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .general-status.show {
+      display: block;
+    }
+
+    .general-status.error {
+      color: #ffd8db;
+
+      background:
+        rgba(255, 89, 100, 0.12);
+    }
+
+    .general-status.success {
+      color: #c9ffe9;
+
+      background:
+        rgba(53, 229, 155, 0.11);
     }
 
     .footer {
@@ -613,6 +859,10 @@
 
       .progress-top {
         font-size: 14px;
+      }
+
+      .donor-name {
+        font-size: 7px;
       }
     }
   </style>
@@ -745,7 +995,50 @@
     </section>
 
 
+    <!-- PLAYER BASEBALL CHECKOUT -->
+
     <section class="checkout-panel">
+
+      <h3 class="panel-title">
+        Complete Your Baseball Donation
+      </h3>
+
+      <p class="panel-description">
+        Enter the name you would like displayed
+        inside your purchased baseballs.
+      </p>
+
+
+      <div class="donor-field">
+
+        <label for="donorName">
+          Donor Name
+        </label>
+
+        <input
+          id="donorName"
+          type="text"
+          maxlength="50"
+          autocomplete="name"
+          placeholder="Example: Grandma & Grandpa"
+        />
+
+      </div>
+
+
+      <label class="anonymous-option">
+
+        <input
+          id="anonymousCheckbox"
+          type="checkbox"
+        />
+
+        <span>
+          Remain Anonymous
+        </span>
+
+      </label>
+
 
       <div
         id="selectionSummary"
@@ -762,6 +1055,7 @@
 
       </div>
 
+
       <button
         id="checkoutButton"
         class="checkout-button"
@@ -770,6 +1064,96 @@
       >
         Continue to Checkout
       </button>
+
+    </section>
+
+
+    <div class="divider"></div>
+
+
+    <!-- GENERAL TEAM DONATION -->
+
+    <section class="team-donation-panel">
+
+      <h3 class="panel-title">
+        Support the Entire OTB Team
+      </h3>
+
+      <p class="panel-description">
+        Want to make a larger donation without purchasing
+        baseballs? Enter any custom amount below.
+        This donation supports the team and is not credited
+        to an individual player.
+      </p>
+
+
+      <div class="amount-field">
+
+        <label for="teamDonationAmount">
+          Custom Donation Amount
+        </label>
+
+        <input
+          id="teamDonationAmount"
+          type="number"
+          min="1"
+          step="0.01"
+          inputmode="decimal"
+          placeholder="100.00"
+        />
+
+      </div>
+
+
+      <div class="donor-field">
+
+        <label for="teamDonorName">
+          Donor Name
+        </label>
+
+        <input
+          id="teamDonorName"
+          type="text"
+          maxlength="50"
+          autocomplete="name"
+          placeholder="Example: The Smith Family"
+        />
+
+      </div>
+
+
+      <label class="anonymous-option">
+
+        <input
+          id="teamAnonymousCheckbox"
+          type="checkbox"
+        />
+
+        <span>
+          Remain Anonymous
+        </span>
+
+      </label>
+
+
+      <button
+        id="teamDonationButton"
+        class="team-donation-button"
+        type="button"
+      >
+        Donate to OTB
+      </button>
+
+
+      <div
+        id="generalDonationStatus"
+        class="general-status"
+      ></div>
+
+
+      <div class="team-donation-note">
+        No baseball selection is required for a general team donation.
+      </div>
 
     </section>
 
@@ -799,53 +1183,53 @@
 
       "david-tano": {
         number: 2,
-        name: "David Taño",
+        name: "David Taño"
       },
 
       "matthew-de-la-fuente": {
         number: 7,
-        name: "Matthew De La Fuente",
+        name: "Matthew De La Fuente"
       },
 
       "ryan-medina": {
         number: 9,
-        name: "Ryan Medina",
+        name: "Ryan Medina"
       },
 
       "justin-jordan": {
         number: 10,
-        name: "Justin Jordan",
+        name: "Justin Jordan"
       },
 
       "andrew-lopez": {
         number: 16,
-        name: "Andrew Lopez",
+        name: "Andrew Lopez"
       },
 
       "tyler-brenes": {
         number: 21,
-        name: "Tyler Brenes",
+        name: "Tyler Brenes"
       },
 
       "branden-rodriguez": {
         number: 26,
-        name: "Branden Rodriguez",
+        name: "Branden Rodriguez"
       },
 
       "braden-olivera": {
         number: 33,
-        name: "Braden Olivera",
+        name: "Braden Olivera"
       },
 
       "daniel-gonzalez": {
         number: 42,
-        name: "Daniel Gonzalez",
+        name: "Daniel Gonzalez"
       },
 
       "alex-angulo": {
         number: 99,
-        name: "Alex Angulo",
-      },
+        name: "Alex Angulo"
+      }
 
     };
 
@@ -890,13 +1274,113 @@
         "checkoutButton"
       );
 
+    const donorNameInput =
+      document.getElementById(
+        "donorName"
+      );
 
-    let selectedPlayerKey = null;
+    const anonymousCheckbox =
+      document.getElementById(
+        "anonymousCheckbox"
+      );
+
+
+    const teamDonationAmount =
+      document.getElementById(
+        "teamDonationAmount"
+      );
+
+    const teamDonorName =
+      document.getElementById(
+        "teamDonorName"
+      );
+
+    const teamAnonymousCheckbox =
+      document.getElementById(
+        "teamAnonymousCheckbox"
+      );
+
+    const teamDonationButton =
+      document.getElementById(
+        "teamDonationButton"
+      );
+
+    const generalDonationStatus =
+      document.getElementById(
+        "generalDonationStatus"
+      );
+
+
+    let selectedPlayerKey =
+      null;
 
     let selectedBaseballs =
       new Set();
 
-    let currentBaseballs = [];
+    let currentBaseballs =
+      [];
+
+
+    anonymousCheckbox.addEventListener(
+      "change",
+      () => {
+
+        if (
+          anonymousCheckbox.checked
+        ) {
+
+          donorNameInput.value =
+            "";
+
+          donorNameInput.disabled =
+            true;
+
+          donorNameInput.placeholder =
+            "Anonymous donation";
+
+        } else {
+
+          donorNameInput.disabled =
+            false;
+
+          donorNameInput.placeholder =
+            "Example: Grandma & Grandpa";
+
+        }
+
+      }
+    );
+
+
+    teamAnonymousCheckbox.addEventListener(
+      "change",
+      () => {
+
+        if (
+          teamAnonymousCheckbox.checked
+        ) {
+
+          teamDonorName.value =
+            "";
+
+          teamDonorName.disabled =
+            true;
+
+          teamDonorName.placeholder =
+            "Anonymous donation";
+
+        } else {
+
+          teamDonorName.disabled =
+            false;
+
+          teamDonorName.placeholder =
+            "Example: The Smith Family";
+
+        }
+
+      }
+    );
 
 
     function getPlayerFromURL() {
@@ -907,7 +1391,9 @@
         );
 
       const player =
-        params.get("player");
+        params.get(
+          "player"
+        );
 
       if (
         player &&
@@ -940,14 +1426,30 @@
     }
 
 
-    function formatMoney(cents) {
+    function showGeneralStatus(
+      message,
+      type
+    ) {
+
+      generalDonationStatus.textContent =
+        message;
+
+      generalDonationStatus.className =
+        `general-status show ${type}`;
+
+    }
+
+
+    function formatMoney(
+      cents
+    ) {
 
       return new Intl.NumberFormat(
         "en-US",
         {
           style: "currency",
           currency: "USD",
-          maximumFractionDigits: 0,
+          maximumFractionDigits: 0
         }
       ).format(
         cents / 100
@@ -1002,11 +1504,13 @@
       const total =
         calculateSelectedTotal();
 
+
       if (
         numbers.length === 0
       ) {
 
-        selectionSummary.childNodes[0]
+        selectionSummary
+          .childNodes[0]
           .textContent =
           "No baseballs selected ";
 
@@ -1016,10 +1520,15 @@
         checkoutButton.disabled =
           true;
 
+        checkoutButton.textContent =
+          "Continue to Checkout";
+
         return;
       }
 
-      selectionSummary.childNodes[0]
+
+      selectionSummary
+        .childNodes[0]
         .textContent =
         `${numbers.length} baseball${
           numbers.length === 1
@@ -1027,11 +1536,19 @@
             : "s"
         } selected `;
 
+
       selectionTotal.textContent =
-        formatMoney(total);
+        formatMoney(
+          total
+        );
+
 
       checkoutButton.disabled =
         false;
+
+
+      checkoutButton.textContent =
+        `Checkout ${formatMoney(total)}`;
 
     }
 
@@ -1043,6 +1560,7 @@
       baseballGrid.innerHTML =
         "";
 
+
       for (
         const baseball
         of baseballs
@@ -1053,10 +1571,12 @@
             baseball.ball_number
           );
 
+
         const button =
           document.createElement(
             "button"
           );
+
 
         button.type =
           "button";
@@ -1064,8 +1584,25 @@
         button.className =
           "ball";
 
-        button.textContent =
+
+        const numberSpan =
+          document.createElement(
+            "span"
+          );
+
+
+        numberSpan.className =
+          "ball-number";
+
+
+        numberSpan.textContent =
           number;
+
+
+        button.appendChild(
+          numberSpan
+        );
+
 
         if (
           baseball.status ===
@@ -1079,45 +1616,81 @@
           button.disabled =
             true;
 
+
+          const donorSpan =
+            document.createElement(
+              "span"
+            );
+
+
+          donorSpan.className =
+            "donor-name";
+
+
+          const donorName =
+            baseball.donor_name &&
+            String(
+              baseball.donor_name
+            ).trim()
+              ? baseball.donor_name
+              : "Anonymous";
+
+
+          donorSpan.textContent =
+            donorName;
+
+
+          donorSpan.title =
+            donorName;
+
+
+          button.appendChild(
+            donorSpan
+          );
+
+
           button.title =
-            `Baseball #${number} has been purchased`;
+            `Purchased by ${donorName}`;
+
+        } else {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              if (
+                selectedBaseballs.has(
+                  number
+                )
+              ) {
+
+                selectedBaseballs.delete(
+                  number
+                );
+
+                button.classList.remove(
+                  "selected"
+                );
+
+              } else {
+
+                selectedBaseballs.add(
+                  number
+                );
+
+                button.classList.add(
+                  "selected"
+                );
+
+              }
+
+              updateSelectionSummary();
+
+            }
+          );
 
         }
 
-        button.addEventListener(
-          "click",
-          () => {
-
-            if (
-              selectedBaseballs.has(
-                number
-              )
-            ) {
-
-              selectedBaseballs.delete(
-                number
-              );
-
-              button.classList.remove(
-                "selected"
-              );
-
-            } else {
-
-              selectedBaseballs.add(
-                number
-              );
-
-              button.classList.add(
-                "selected"
-              );
-
-            }
-
-            updateSelectionSummary();
-
-          }
-        );
 
         baseballGrid.appendChild(
           button
@@ -1141,13 +1714,16 @@
         "Loading fundraiser..."
       );
 
+
       const fallback =
         players[
           selectedPlayerKey
         ];
 
+
       playerTitle.textContent =
         `#${fallback.number} — ${fallback.name}`;
+
 
       try {
 
@@ -1157,12 +1733,15 @@
               selectedPlayerKey
             )}`,
             {
-              cache: "no-store",
+              cache:
+                "no-store"
             }
           );
 
+
         const data =
           await response.json();
+
 
         if (
           !response.ok ||
@@ -1176,19 +1755,24 @@
 
         }
 
+
         selectedPlayerKey =
           data.player.key;
+
 
         playerTitle.textContent =
           `#${data.player.number} — ${data.player.name}`;
 
+
         currentBaseballs =
           data.baseballs || [];
+
 
         raisedText.textContent =
           `${formatMoney(
             data.totals.raisedCents
           )} Raised`;
+
 
         const goal =
           Number(
@@ -1196,11 +1780,13 @@
             5050
           );
 
+
         const raised =
           Number(
             data.totals.raisedDollars ||
             0
           );
+
 
         const percent =
           Math.min(
@@ -1214,22 +1800,27 @@
             )
           );
 
+
         progressFill.style.width =
           `${percent}%`;
+
 
         renderBaseballs(
           currentBaseballs
         );
 
+
         setStatus(
           "Select one or more available baseballs."
         );
+
 
       } catch (error) {
 
         console.error(
           error
         );
+
 
         setStatus(
           error.message ||
@@ -1242,6 +1833,10 @@
     }
 
 
+    /* =========================
+       BASEBALL CHECKOUT
+    ========================= */
+
     checkoutButton.addEventListener(
       "click",
       async () => {
@@ -1253,15 +1848,57 @@
           return;
         }
 
+
+        let donorName;
+
+
+        if (
+          anonymousCheckbox.checked
+        ) {
+
+          donorName =
+            "Anonymous";
+
+        } else {
+
+          donorName =
+            donorNameInput
+              .value
+              .trim()
+              .replace(
+                /\s+/g,
+                " "
+              );
+
+
+          if (!donorName) {
+
+            setStatus(
+              "Please enter a donor name or select Remain Anonymous.",
+              "error"
+            );
+
+            donorNameInput.focus();
+
+            return;
+
+          }
+
+        }
+
+
         checkoutButton.disabled =
           true;
+
 
         checkoutButton.textContent =
           "Creating Checkout...";
 
+
         setStatus(
           "Preparing secure checkout..."
         );
+
 
         try {
 
@@ -1273,31 +1910,54 @@
                 a - b
             );
 
+
           const response =
             await fetch(
               "/api/create-checkout",
               {
-                method: "POST",
+                method:
+                  "POST",
 
                 headers: {
-                  "content-type":
-                    "application/json",
+                  "Content-Type":
+                    "application/json"
                 },
 
                 body:
                   JSON.stringify({
-
                     playerKey:
                       selectedPlayerKey,
 
                     baseballs,
 
-                  }),
+                    donorName
+                  })
               }
             );
 
+
+          const contentType =
+            response.headers.get(
+              "content-type"
+            ) || "";
+
+
+          if (
+            !contentType.includes(
+              "application/json"
+            )
+          ) {
+
+            throw new Error(
+              "Checkout returned an unexpected response."
+            );
+
+          }
+
+
           const data =
             await response.json();
+
 
           if (
             !response.ok
@@ -1310,6 +1970,7 @@
 
           }
 
+
           if (
             !data.url
           ) {
@@ -1320,8 +1981,10 @@
 
           }
 
+
           window.location.href =
             data.url;
+
 
         } catch (error) {
 
@@ -1329,17 +1992,198 @@
             error
           );
 
+
           setStatus(
             error.message ||
-            "Checkout is not available yet.",
+            "Checkout is not available.",
             "error"
           );
+
 
           checkoutButton.disabled =
             false;
 
-          checkoutButton.textContent =
-            "Continue to Checkout";
+
+          updateSelectionSummary();
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       GENERAL TEAM DONATION
+    ========================= */
+
+    teamDonationButton.addEventListener(
+      "click",
+      async () => {
+
+        const amount =
+          Number(
+            teamDonationAmount.value
+          );
+
+
+        let donorName;
+
+
+        if (
+          teamAnonymousCheckbox.checked
+        ) {
+
+          donorName =
+            "Anonymous";
+
+        } else {
+
+          donorName =
+            teamDonorName
+              .value
+              .trim()
+              .replace(
+                /\s+/g,
+                " "
+              );
+
+
+          if (!donorName) {
+
+            showGeneralStatus(
+              "Please enter a donor name or select Remain Anonymous.",
+              "error"
+            );
+
+            teamDonorName.focus();
+
+            return;
+
+          }
+
+        }
+
+
+        if (
+          !Number.isFinite(amount) ||
+          amount < 1
+        ) {
+
+          showGeneralStatus(
+            "Please enter a donation amount of at least $1.",
+            "error"
+          );
+
+          teamDonationAmount.focus();
+
+          return;
+
+        }
+
+
+        teamDonationButton.disabled =
+          true;
+
+
+        teamDonationButton.textContent =
+          "Creating Checkout...";
+
+
+        showGeneralStatus(
+          "Preparing secure checkout...",
+          "success"
+        );
+
+
+        try {
+
+          const response =
+            await fetch(
+              "/api/create-general-donation",
+              {
+                method:
+                  "POST",
+
+                headers: {
+                  "Content-Type":
+                    "application/json"
+                },
+
+                body:
+                  JSON.stringify({
+                    amount,
+                    donorName
+                  })
+              }
+            );
+
+
+          const contentType =
+            response.headers.get(
+              "content-type"
+            ) || "";
+
+
+          if (
+            !contentType.includes(
+              "application/json"
+            )
+          ) {
+
+            throw new Error(
+              "General donation checkout returned an unexpected response."
+            );
+
+          }
+
+
+          const data =
+            await response.json();
+
+
+          if (!response.ok) {
+
+            throw new Error(
+              data.error ||
+              "Unable to create donation checkout."
+            );
+
+          }
+
+
+          if (!data.url) {
+
+            throw new Error(
+              "Checkout URL was not returned."
+            );
+
+          }
+
+
+          window.location.href =
+            data.url;
+
+
+        } catch (error) {
+
+          console.error(
+            error
+          );
+
+
+          showGeneralStatus(
+            error.message ||
+            "General donation checkout is unavailable.",
+            "error"
+          );
+
+
+          teamDonationButton.disabled =
+            false;
+
+
+          teamDonationButton.textContent =
+            "Donate to OTB";
 
         }
 
@@ -1351,6 +2195,7 @@
 
       selectedPlayerKey =
         getPlayerFromURL();
+
 
       await loadFundraiser();
 
